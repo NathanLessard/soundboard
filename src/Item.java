@@ -22,6 +22,6 @@ public class Item {
 
     public String toString()
     {
-        return id + " " + name;
+        return name;
     }
 }

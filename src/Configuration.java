@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Vector;
 import java.awt.event.KeyEvent;
 
 public class Configuration {
@@ -14,15 +13,19 @@ public class Configuration {
     static List<Integer> keyCodeMap = new ArrayList<Integer>();
     static List<String> keyTextMap = new ArrayList<String>();
 
-    public static void remplir() {
+    public static void conf(){
         for(int i = 0; i < 1000000; ++i) {                                                    
             String text = KeyEvent.getKeyText(i);                              
             if(!text.contains("Unknown keyCode: ")) {                                         
                 keyCodeMap.add(i);
                 keyTextMap.add(text);
             }                                                                                 
-        }         
+        }
 
+        remplir();
+    }
+
+    public static void remplir() {
         try{
             FileReader fr= new FileReader("input.txt");   
             int cmpt = 0;
