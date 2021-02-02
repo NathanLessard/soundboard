@@ -71,7 +71,7 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\0.mp3");
+                    File dest = new File(System.getProperty("user.dir") + "\\0.wav");
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
@@ -91,7 +91,7 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\1.mp3");
+                    File dest = new File(System.getProperty("user.dir") + "\\1.wav");
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
@@ -111,7 +111,7 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\2.mp3");
+                    File dest = new File(System.getProperty("user.dir") + "\\2.wav");
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
@@ -131,7 +131,7 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\3.mp3");
+                    File dest = new File(System.getProperty("user.dir") + "\\3.wav");
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
@@ -151,7 +151,7 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\4.mp3");
+                    File dest = new File(System.getProperty("user.dir") + "\\4.wav");
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
@@ -171,7 +171,7 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\5.mp3");
+                    File dest = new File(System.getProperty("user.dir") + "\\5.wav");
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
@@ -191,10 +191,10 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\6.mp3");
+                    File dest = new File(System.getProperty("user.dir") + "\\6.wav");
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                        System.out.println("Success");
+                        System.out.println("Success" + dest.toPath());
                     } catch (IOException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -211,7 +211,7 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\7.mp3");
+                    File dest = new File(System.getProperty("user.dir") + "\\7.wav");
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
@@ -231,7 +231,7 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\8.mp3");
+                    File dest = new File(System.getProperty("user.dir") + "\\8.wav");
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
@@ -251,7 +251,7 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\9.mp3");
+                    File dest = new File(System.getProperty("user.dir") + "\\9.wav");
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
