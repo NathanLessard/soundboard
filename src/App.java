@@ -51,12 +51,18 @@ public class App {
 
         gridBag.insets = new Insets(0, 0, 0, 0);
 
+        gridBag.gridy = 0;
+        gridBag.gridx = 0;
+        JLabel lUTitre = new JLabel("Importer vos propre son avec l'extention .wav");
+
+        pUSon.add(lUTitre, gridBag);
+
         for (int i = 1; i <= 10; i++) {
             gridBag.gridx = 0;
             lUSon[i - 1] = new JLabel("Changer le son " + i + " ");
             bUSon[i - 1] = new JButton("Importer");
 
-            gridBag.gridy = i - 1;
+            gridBag.gridy = i;
             pUSon.add(lUSon[i - 1], gridBag);
             gridBag.gridx = 1;
             pUSon.add(bUSon[i - 1], gridBag);
