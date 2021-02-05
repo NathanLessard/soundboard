@@ -19,6 +19,8 @@ public class AudioPlayer implements LineListener {
     private AudioInputStream audioStream;
     private String filePath;
     private File audioFile;
+    private DataLine.Info info;
+    private AudioFormat format;
 
     public AudioPlayer(int c) {
         
@@ -28,9 +30,9 @@ public class AudioPlayer implements LineListener {
 
         try {
             audioStream = AudioSystem.getAudioInputStream(audioFile);
-            AudioFormat format = audioStream.getFormat();
+            format = audioStream.getFormat();
  
-            DataLine.Info info = new DataLine.Info(Clip.class, format);
+            info = new DataLine.Info(Clip.class, format);
  
             clip = (Clip) AudioSystem.getLine(info);
  
@@ -56,40 +58,39 @@ public class AudioPlayer implements LineListener {
     }
 
     public void arret() {
-        clip.stop();
-        clip.close();
-        resetAudioStream();
         clip.setMicrosecondPosition(0);
+        clip.stop();
+        //clip.close();
+        //resetAudioStream();
     }
 
     public void resetAudioStream() {
         try {
             audioStream = AudioSystem.getAudioInputStream(audioFile);
-            AudioFormat format = audioStream.getFormat();
- 
-            DataLine.Info info = new DataLine.Info(Clip.class, format);
- 
+
             clip = (Clip) AudioSystem.getLine(info);
  
             clip.addLineListener(this);
  
             clip.open(audioStream);
-        } catch (UnsupportedAudioFileException e) {
-            System.out.println("Erreur : " + e);
-            e.printStackTrace();
         } catch (IOException e) {
             System.out.println("Erreur : " + e);
             e.printStackTrace();
         } catch (LineUnavailableException e) {
             System.out.println("Erreur : " + e);
             e.printStackTrace();
+        }catch (UnsupportedAudioFileException e) {
+            System.out.println("Erreur : " + e);
+            e.printStackTrace();
         }
     }
 
     public void closeAllStream(){
-        clip.close();
         try {
+            clip.stop();
+            clip.close();
             audioStream.close();
+            System.out.println("Stream fermer sur : " + filePath);
         } catch (IOException e) {
             System.out.println("Erreur : " + e);
             e.printStackTrace();
@@ -107,7 +108,6 @@ public class AudioPlayer implements LineListener {
             System.out.println("START");
           } else if (type == LineEvent.Type.STOP) {
             System.out.println("STOP");
-            clip.close();
           }
     }
 }

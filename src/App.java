@@ -82,6 +82,8 @@ public class App {
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
+                        fenetre.toFront();
+                        fenetre.requestFocus();
                     } catch (IOException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -102,6 +104,8 @@ public class App {
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
+                        fenetre.toFront();
+                        fenetre.requestFocus();
                     } catch (IOException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -122,6 +126,8 @@ public class App {
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
+                        fenetre.toFront();
+                        fenetre.requestFocus();
                     } catch (IOException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -142,6 +148,8 @@ public class App {
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
+                        fenetre.toFront();
+                        fenetre.requestFocus();
                     } catch (IOException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -162,6 +170,8 @@ public class App {
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
+                        fenetre.toFront();
+                        fenetre.requestFocus();
                     } catch (IOException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -182,6 +192,8 @@ public class App {
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
+                        fenetre.toFront();
+                        fenetre.requestFocus();
                     } catch (IOException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -222,6 +234,8 @@ public class App {
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
+                        fenetre.toFront();
+                        fenetre.requestFocus();
                     } catch (IOException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -242,6 +256,8 @@ public class App {
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
+                        fenetre.toFront();
+                        fenetre.requestFocus();
                     } catch (IOException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -254,7 +270,7 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser chooser = new JFileChooser();
-                chooser.setCurrentDirectory(new File("/Users/Downloads"));
+                chooser.setCurrentDirectory(new File("/Users"));
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
@@ -262,6 +278,8 @@ public class App {
                     try {
                         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         System.out.println("Success");
+                        fenetre.toFront();
+                        fenetre.requestFocus();
                     } catch (IOException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
