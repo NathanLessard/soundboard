@@ -8,8 +8,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
+import javazoom.jl.converter.Converter;
+import javazoom.jl.decoder.JavaLayerException;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -47,7 +47,7 @@ public class App {
 
         // Le panel pour changer les sons
         JLabel lUSon[] = new JLabel[10];
- 
+
         JButton bUSon[] = new JButton[10];
 
         gridBag.insets = new Insets(0, 0, 0, 0);
@@ -78,20 +78,20 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\0.wav");
+                    Converter c = new Converter();
                     try {
-                        Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        c.convert(source.toString(), "0.wav");
                         System.out.println("Success");
                         fenetre.toFront();
                         fenetre.requestFocus();
-                    } catch (IOException ex) {
+                    } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
                     }
                 }
             }
         });
-        
+
         bUSon[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -100,13 +100,13 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\1.wav");
+                    Converter c = new Converter();
                     try {
-                        Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        c.convert(source.toString(), "1.wav");
                         System.out.println("Success");
                         fenetre.toFront();
                         fenetre.requestFocus();
-                    } catch (IOException ex) {
+                    } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
                     }
@@ -122,13 +122,13 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\2.wav");
+                    Converter c = new Converter();
                     try {
-                        Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        c.convert(source.toString(), "2.wav");
                         System.out.println("Success");
                         fenetre.toFront();
                         fenetre.requestFocus();
-                    } catch (IOException ex) {
+                    } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
                     }
@@ -144,13 +144,13 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\3.wav");
+                    Converter c = new Converter();
                     try {
-                        Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        c.convert(source.toString(), "3.wav");
                         System.out.println("Success");
                         fenetre.toFront();
                         fenetre.requestFocus();
-                    } catch (IOException ex) {
+                    } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
                     }
@@ -166,13 +166,13 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\4.wav");
+                    Converter c = new Converter();
                     try {
-                        Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        c.convert(source.toString(), "4.wav");
                         System.out.println("Success");
                         fenetre.toFront();
                         fenetre.requestFocus();
-                    } catch (IOException ex) {
+                    } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
                     }
@@ -188,13 +188,13 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\5.wav");
+                    Converter c = new Converter();
                     try {
-                        Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        c.convert(source.toString(), "5.wav");
                         System.out.println("Success");
                         fenetre.toFront();
                         fenetre.requestFocus();
-                    } catch (IOException ex) {
+                    } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
                     }
@@ -210,11 +210,11 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\6.wav");
+                    Converter c = new Converter();
                     try {
-                        Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                        System.out.println("Success" + dest.toPath());
-                    } catch (IOException ex) {
+                        c.convert(source.toString(), "6.wav");
+                        System.out.println("Success");
+                    } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
                     }
@@ -230,13 +230,13 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\7.wav");
+                    Converter c = new Converter();
                     try {
-                        Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        c.convert(source.toString(), "7.wav");
                         System.out.println("Success");
                         fenetre.toFront();
                         fenetre.requestFocus();
-                    } catch (IOException ex) {
+                    } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
                     }
@@ -252,13 +252,13 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\8.wav");
+                    Converter c = new Converter();
                     try {
-                        Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        c.convert(source.toString(), "8.wav");
                         System.out.println("Success");
                         fenetre.toFront();
                         fenetre.requestFocus();
-                    } catch (IOException ex) {
+                    } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
                     }
@@ -274,13 +274,13 @@ public class App {
                 int retrival = chooser.showSaveDialog(null);
                 if (retrival == JFileChooser.APPROVE_OPTION) {
                     File source = chooser.getSelectedFile();
-                    File dest = new File(System.getProperty("user.dir") + "\\9.wav");
+                    Converter c = new Converter();
                     try {
-                        Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        c.convert(source.toString(), "9.wav");
                         System.out.println("Success");
                         fenetre.toFront();
                         fenetre.requestFocus();
-                    } catch (IOException ex) {
+                    } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
                     }
