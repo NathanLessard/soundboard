@@ -66,4 +66,16 @@ public class Keys implements KeyListener {
             audio[9].arret();
         }
     }
+
+    public void closeAudio(){
+        for (int i = 0; i < 10; i++){
+            audio[i].closeAllStream();
+        }
+    }
+
+    public void resetAudio(){
+        for (int i = 0; i < 10; i++){
+            audio[i].resetAudioStream();
+        }
+    }
 }

@@ -38,13 +38,13 @@ public class AudioPlayer implements LineListener {
  
             clip.open(audioStream);
         } catch (UnsupportedAudioFileException e) {
-            // TODO Auto-generated catch block
+            System.out.println("Erreur : " + e);
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+            System.out.println("Erreur : " + e);
             e.printStackTrace();
         } catch (LineUnavailableException e) {
-            // TODO Auto-generated catch block
+            System.out.println("Erreur : " + e);
             e.printStackTrace();
         }
  
@@ -75,13 +75,23 @@ public class AudioPlayer implements LineListener {
  
             clip.open(audioStream);
         } catch (UnsupportedAudioFileException e) {
-            // TODO Auto-generated catch block
+            System.out.println("Erreur : " + e);
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+            System.out.println("Erreur : " + e);
             e.printStackTrace();
         } catch (LineUnavailableException e) {
-            // TODO Auto-generated catch block
+            System.out.println("Erreur : " + e);
+            e.printStackTrace();
+        }
+    }
+
+    public void closeAllStream(){
+        clip.close();
+        try {
+            audioStream.close();
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e);
             e.printStackTrace();
         }
     }

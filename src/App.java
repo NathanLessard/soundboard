@@ -17,6 +17,7 @@ public class App {
         JFrame fenetre = new JFrame("Soundboard");
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fenetre.setSize(425, 450);
+        Keys keyListener = new Keys();
 
         GridBagConstraints gridBag = new GridBagConstraints();
         CardLayout card = new CardLayout();
@@ -26,7 +27,7 @@ public class App {
         JPanel pUSon = new JPanel(new GridBagLayout());
         JPanel pUKey = new JPanel(new GridBagLayout());
 
-        fenetre.addKeyListener(new Keys());
+        fenetre.addKeyListener(keyListener);
 
         JMenu mOption = new JMenu("Options");
 
@@ -37,7 +38,7 @@ public class App {
         gridBag.gridx = 0;
         JLabel lPlay[] = new JLabel[10];
         for (int i = 1; i <= 10; i++) {
-            lPlay[i - 1] = new JLabel("Jouer le son " + i + " avec la touche : " + Configuration.key[i - 1]);
+            lPlay[i - 1] = new JLabel("Jouer le son " + i + " en tenant la touche : " + Configuration.key[i - 1]);
 
             gridBag.gridy = i - 1;
             pPlay.add(lPlay[i - 1], gridBag);
@@ -311,13 +312,15 @@ public class App {
                     }
                     myWriter.close();
                     Configuration.remplir();
+                    for (int i = 1; i <= 10; i++){
+                        lPlay[i-1].setText("Jouer le son " + i + " en tenant la touche : " + Configuration.key[i-1]);
+                        cUKey[i-1].getModel().setSelectedItem(new Item(Configuration.code[i-1], Configuration.key[i-1]));
+                    }
+                    fenetre.toFront();
+                    fenetre.requestFocus();
                 } catch (IOException er) {
                     System.out.println("An error occurred.");
                     er.printStackTrace();
-                }
-                for (int i = 1; i <= 10; i++){
-                    lPlay[i-1].setText("Jouer le son " + i + " avec la touche : " + Configuration.key[i-1]);
-                    cUKey[i-1].getModel().setSelectedItem(new Item(Configuration.code[i-1], Configuration.key[i-1]));
                 }
             }
         });
@@ -333,22 +336,40 @@ public class App {
         pCurr.add(pUKey, "pUKey");
 
         JMenuItem mPlay = new JMenuItem(new AbstractAction("Jouer les sons") {
+            /**
+             *
+             */
+            private static final long serialVersionUID = 1L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
+                keyListener.resetAudio();
                 card.show(pCurr, "pPlay");
             }
         });
 
         JMenuItem mOSon = new JMenuItem(new AbstractAction("Changer les sons") {
+            /**
+             *
+             */
+            private static final long serialVersionUID = 1L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
+                keyListener.closeAudio();
                 card.show(pCurr, "pUSon");
             }
         });
 
         JMenuItem mOKey = new JMenuItem(new AbstractAction("Changer les touches") {
+            /**
+             *
+             */
+            private static final long serialVersionUID = 1L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
+                keyListener.closeAudio();
                 card.show(pCurr, "pUKey");
             }
         });
