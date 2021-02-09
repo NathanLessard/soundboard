@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.awt.event.KeyEvent;
+
+import org.jnativehook.keyboard.NativeKeyEvent;
 
 public class Configuration {
     static String key[] = new String[10];
@@ -15,7 +16,7 @@ public class Configuration {
 
     public static void conf(){
         for(int i = 0; i < 1000000; ++i) {                                                    
-            String text = KeyEvent.getKeyText(i);                              
+            String text = NativeKeyEvent.getKeyText(i);                              
             if(!text.contains("Unknown keyCode: ")) {                                         
                 keyCodeMap.add(i);
                 keyTextMap.add(text);
@@ -35,7 +36,7 @@ public class Configuration {
             while(scanner.hasNextInt()) {
                 int next = scanner.nextInt();
                 code[cmpt] = next;
-                key[cmpt] = KeyEvent.getKeyText(next);
+                key[cmpt] = NativeKeyEvent.getKeyText(next);
 	            cmpt+=1;
             }
 

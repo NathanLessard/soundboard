@@ -10,14 +10,39 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javazoom.jl.converter.Converter;
 import javazoom.jl.decoder.JavaLayerException;
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JRootPane;
+import org.jnativehook.GlobalScreen;
+import org.jnativehook.NativeHookException;
+import org.jnativehook.keyboard.NativeKeyEvent;
+import org.jnativehook.keyboard.NativeKeyListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class App {
-    public static void main(String[] args) throws Exception {
+
+public class App extends JFrame implements NativeKeyListener{
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private AudioPlayer audio[] = new AudioPlayer[10];
+    private Boolean jouer;
+
+    public App() {
         Configuration.conf();
-        JFrame fenetre = new JFrame("Soundboard");
-        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fenetre.setSize(425, 450);
-        Keys keyListener = new Keys();
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+        setLocationRelativeTo(null);
+        setTitle("Soundboard");
+        setSize(450,450);
+
+        for (int i = 0; i < 10; i++){
+            audio[i] = new AudioPlayer(i);
+        }
+        jouer = true;
 
         GridBagConstraints gridBag = new GridBagConstraints();
         CardLayout card = new CardLayout();
@@ -26,9 +51,6 @@ public class App {
         JPanel pPlay = new JPanel(new GridBagLayout());
         JPanel pUSon = new JPanel(new GridBagLayout());
         JPanel pUKey = new JPanel(new GridBagLayout());
-
-        fenetre.addKeyListener(keyListener);
-
         JMenu mOption = new JMenu("Options");
 
         JMenuBar mBar = new JMenuBar();
@@ -82,8 +104,8 @@ public class App {
                     try {
                         c.convert(source.toString(), "0.wav");
                         System.out.println("Success");
-                        fenetre.toFront();
-                        fenetre.requestFocus();
+                        toFront();
+                        requestFocus();
                     } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -104,8 +126,8 @@ public class App {
                     try {
                         c.convert(source.toString(), "1.wav");
                         System.out.println("Success");
-                        fenetre.toFront();
-                        fenetre.requestFocus();
+                        toFront();
+                        requestFocus();
                     } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -126,8 +148,8 @@ public class App {
                     try {
                         c.convert(source.toString(), "2.wav");
                         System.out.println("Success");
-                        fenetre.toFront();
-                        fenetre.requestFocus();
+                        toFront();
+                        requestFocus();
                     } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -148,8 +170,8 @@ public class App {
                     try {
                         c.convert(source.toString(), "3.wav");
                         System.out.println("Success");
-                        fenetre.toFront();
-                        fenetre.requestFocus();
+                        toFront();
+                        requestFocus();
                     } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -170,8 +192,8 @@ public class App {
                     try {
                         c.convert(source.toString(), "4.wav");
                         System.out.println("Success");
-                        fenetre.toFront();
-                        fenetre.requestFocus();
+                        toFront();
+                        requestFocus();
                     } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -192,8 +214,8 @@ public class App {
                     try {
                         c.convert(source.toString(), "5.wav");
                         System.out.println("Success");
-                        fenetre.toFront();
-                        fenetre.requestFocus();
+                        toFront();
+                        requestFocus();
                     } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -234,8 +256,8 @@ public class App {
                     try {
                         c.convert(source.toString(), "7.wav");
                         System.out.println("Success");
-                        fenetre.toFront();
-                        fenetre.requestFocus();
+                        toFront();
+                        requestFocus();
                     } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -256,8 +278,8 @@ public class App {
                     try {
                         c.convert(source.toString(), "8.wav");
                         System.out.println("Success");
-                        fenetre.toFront();
-                        fenetre.requestFocus();
+                        toFront();
+                        requestFocus();
                     } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -278,8 +300,8 @@ public class App {
                     try {
                         c.convert(source.toString(), "9.wav");
                         System.out.println("Success");
-                        fenetre.toFront();
-                        fenetre.requestFocus();
+                        toFront();
+                        requestFocus();
                     } catch (JavaLayerException ex) {
                         ex.printStackTrace();
                         System.out.println(ex);
@@ -334,8 +356,8 @@ public class App {
                         lPlay[i-1].setText("Jouer le son " + i + " en tenant la touche : " + Configuration.key[i-1]);
                         cUKey[i-1].getModel().setSelectedItem(new Item(Configuration.code[i-1], Configuration.key[i-1]));
                     }
-                    fenetre.toFront();
-                    fenetre.requestFocus();
+                    toFront();
+                    requestFocus();
                 } catch (IOException er) {
                     System.out.println("An error occurred.");
                     er.printStackTrace();
@@ -347,7 +369,7 @@ public class App {
         gridBag.gridx = 0;
         pUKey.add(bUKey, gridBag);
 
-        fenetre.add(mBar, BorderLayout.NORTH);
+        add(mBar, BorderLayout.NORTH);
 
         pCurr.add(pPlay, "pPlay");
         pCurr.add(pUSon, "pUSon");
@@ -361,7 +383,7 @@ public class App {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                keyListener.resetAudio();
+                resetAudio();
                 card.show(pCurr, "pPlay");
             }
         });
@@ -374,7 +396,7 @@ public class App {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                keyListener.closeAudio();
+                closeAudio();
                 card.show(pCurr, "pUSon");
             }
         });
@@ -387,7 +409,7 @@ public class App {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                keyListener.closeAudio();
+                closeAudio();
                 card.show(pCurr, "pUKey");
             }
         });
@@ -397,7 +419,132 @@ public class App {
         mOption.add(mOSon);
         mBar.add(mOption);
 
-        fenetre.add(pCurr);
-        fenetre.setVisible(true);
+        add(pCurr);
+        Runnable waitRunner = new Runnable() {
+
+            public void run() {
+                try {
+                    
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        setVisible(true);
+        Thread th = new Thread(waitRunner, "th");
+        th.start();
     }
+    public static void main(String[] args) throws Exception {
+        Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
+        logger.setLevel(Level.OFF);
+        logger.setUseParentHandlers(false);
+        try {
+            GlobalScreen.registerNativeHook();
+        }
+        catch (NativeHookException ex) {
+            System.err.println("There was a problem registering the native hook.");
+            System.err.println(ex.getMessage());
+            System.exit(1);
+        }
+        
+        GlobalScreen.addNativeKeyListener(new App());
+    }
+
+    public void closeAudio(){
+        if(jouer){
+            for (int i = 0; i < 10; i++){
+                audio[i].closeAllStream();
+            }
+            jouer = false;
+        }
+    }
+
+    public void resetAudio(){
+        if (!jouer){
+            for (int i = 0; i < 10; i++){
+                audio[i].resetAudioStream();
+            }
+            jouer = true;
+        }
+    }
+
+    @Override
+    public void nativeKeyPressed(NativeKeyEvent e) {
+        if (jouer){
+            if (e.getKeyCode() == Configuration.code[0]) {
+                audio[0].jouer();
+            }
+            if(e.getKeyCode() == Configuration.code[1]){
+                audio[1].jouer();
+            }
+            if(e.getKeyCode() == Configuration.code[2]){
+                audio[2].jouer();
+            }
+            if(e.getKeyCode() == Configuration.code[3]){
+                audio[3].jouer();
+            }
+            if(e.getKeyCode() == Configuration.code[4]){
+                audio[4].jouer();
+            }
+            if(e.getKeyCode() == Configuration.code[5]){
+                audio[5].jouer();
+            }
+            if(e.getKeyCode() == Configuration.code[6]){
+                audio[6].jouer();
+            }
+            if(e.getKeyCode() == Configuration.code[7]){
+                audio[7].jouer();
+            }
+            if(e.getKeyCode() == Configuration.code[8]){
+                audio[8].jouer();
+            }
+            if(e.getKeyCode() == Configuration.code[9]){
+                audio[9].jouer();
+            }
+        }
+    }
+
+    @Override
+    public void nativeKeyReleased(NativeKeyEvent e) {
+        if (jouer){
+            if (e.getKeyCode() == Configuration.code[0]) {
+                audio[0].arret();
+            }
+            if(e.getKeyCode() == Configuration.code[1]){
+                audio[1].arret();
+            }
+            if(e.getKeyCode() == Configuration.code[2]){
+                audio[2].arret();
+            }
+            if(e.getKeyCode() == Configuration.code[3]){
+                audio[3].arret();
+            }
+            if(e.getKeyCode() == Configuration.code[4]){
+                audio[4].arret();
+            }
+            if(e.getKeyCode() == Configuration.code[5]){
+                audio[5].arret();
+            }
+            if(e.getKeyCode() == Configuration.code[6]){
+                audio[6].arret();
+            }
+            if(e.getKeyCode() == Configuration.code[7]){
+                audio[7].arret();
+            }
+            if(e.getKeyCode() == Configuration.code[8]){
+                audio[8].arret();
+            }
+            if(e.getKeyCode() == Configuration.code[9]){
+                audio[9].arret();
+            }
+        }
+
+    }
+
+    @Override
+    public void nativeKeyTyped(NativeKeyEvent e) {
+        
+    }
+
 }
