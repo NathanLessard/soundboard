@@ -15,7 +15,7 @@ public class Configuration {
     static List<String> keyTextMap = new ArrayList<String>();
 
     public static void conf(){
-        for(int i = 0; i < 1000000; ++i) {                                                    
+        for(int i = 1; i < 1000000; ++i) {                                                    
             String text = NativeKeyEvent.getKeyText(i);                              
             if(!text.contains("Unknown keyCode: ")) {                                         
                 keyCodeMap.add(i);
